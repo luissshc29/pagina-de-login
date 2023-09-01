@@ -7,7 +7,6 @@ export default function HomePage() {
 
     const [senha, setSenha] = useState('')
     const [usuario, setUsuario] = useState('')
-    const [mensagemErro, setMensagemErro] = useState('')
 
     const router = useRouter()
 
@@ -21,15 +20,6 @@ export default function HomePage() {
 
         setSenha('')
         setUsuario('')
-
-        setTimeout (() => {
-            setMensagemErro('Usuário e/ou senha incorretos!')
-        }, 200)
-
-
-        setTimeout (() => {
-            setMensagemErro('')
-        }, 2000)
     }
 
     return (
@@ -111,16 +101,7 @@ export default function HomePage() {
                     label="Login"
                     colorVariant="warning"
                 />
-                <Text   
-                    styleSheet={{
-                        fontSize: '1.5em',
-                        color: 'rgba(255, 0, 0)',
-                        padding: '0.2em 0.5em',
-                        minHeight: '2em'
-                    }}
-                >
-                    {mensagemErro}
-                </Text>
+                <p style={{minHeight: '2em'}}></p>
                 <p
                     style={{
                         fontSize: '0.8em',

@@ -30,6 +30,8 @@ export default function AreaLogada(props) {
 
     const router = useRouter()
 
+    const bemVindo = 'Bem-vindo(a) ADMIN!'
+
     return (
         <Box 
             styleSheet={{
@@ -61,7 +63,7 @@ export default function AreaLogada(props) {
                         borderBottom:'1px solid black'
                     }}
                 >
-                    Bem-vindo(a) ADMIN!
+                    {bemVindo}
                 </h1>
                 <Button 
                     styleSheet={{

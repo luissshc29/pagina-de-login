@@ -1,0 +1,124 @@
+import { useState } from "react"
+import nookies from 'nookies'
+import { useRouter } from "next/router"
+import { Box, Button, Text } from "@skynexui/components"
+
+export default function HomePage() {
+
+    const [senha, setSenha] = useState('')
+    const [usuario, setUsuario] = useState('')
+    const [mensagemErro, setMensagemErro] = useState('')
+
+    const router = useRouter()
+
+    function confereLogin(e) {
+        e.preventDefault()
+
+        nookies.set(null, 'SENHA_DIGITADA', senha)
+        nookies.set(null, 'USUARIO_DIGITADO', usuario)
+    
+        router.push('/areaLogada')
+
+        setSenha('')
+        setUsuario('')
+
+        setTimeout (() => {
+            
+        setMensagemErro('Usuário e/ou senha incorretos!')
+        }, 200)
+
+        setTimeout (() => {
+            setMensagemErro('')
+        }, 2000)
+    }
+
+    return (
+        <Box styleSheet={{
+            height: '100vh',
+            display: 'grid',
+            placeItems: 'center'
+        }}>
+            <form
+                onSubmit={(e) => confereLogin(e)}
+                style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    width: '60%', 
+                    height: '50%',
+                    gap: '0.5em',
+                    borderRadius: "10px",
+                    border: '1px solid yellow',
+                    padding: '2em'
+                }}
+            >
+                <h1
+                    style={{
+                        fontSize: '1.2em',
+                        fontWeight: '600'
+                    }}
+                >
+                    Usuário:
+                </h1>
+                <input
+                    required
+                    name="input"
+                    onChange={(evento) => setUsuario(evento.target.value)}
+                    value={usuario}
+                    style={{
+                        padding: '1em',
+                        borderRadius: "10px",
+                        width: '50%',
+                        textAlign: 'center',
+                        border:'1px lightGray solid',
+                        outline:'none'
+                    }}
+                />
+                <h1
+                    style={{
+                        fontSize: '1.2em',
+                        fontWeight: '600'
+                    }}
+                >
+                    Senha:
+                </h1>
+                <input
+                    required
+                    name="input"
+                    onChange={(evento) => setSenha(evento.target.value)}
+                    value={senha}
+                    style={{
+                        padding: '1em',
+                        borderRadius: "10px",
+                        width: '50%',
+                        textAlign: 'center',
+                        border:'1px lightGray solid',
+                        outline:'none'
+                    }}
+                    type="password"
+                />
+                <Button 
+                    type="submit"
+                    styleSheet={{
+                        width: '30%',
+                        borderRadius: '10px',
+                        fontSize: '1.2em',
+                        marginTop: '1em'
+                    }}
+                    label="Login"
+                    colorVariant="warning"
+                />
+                <Text   
+                    styleSheet={{
+                        fontSize: '1.5em',
+                        color: 'rgba(255, 0, 0)',
+                        padding: '0.2em 0.5em'
+                    }}
+                >
+                    {mensagemErro}
+                </Text>
+            </form>
+        </Box>
+    )
+}

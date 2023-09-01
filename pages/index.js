@@ -22,7 +22,10 @@ export default function HomePage() {
         setSenha('')
         setUsuario('')
 
-        setMensagemErro('Usuário e/ou senha incorretos!')
+        setTimeout (() => {
+            setMensagemErro('Usuário e/ou senha incorretos!')
+        }, 200)
+
 
         setTimeout (() => {
             setMensagemErro('')

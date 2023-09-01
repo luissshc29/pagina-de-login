@@ -22,10 +22,7 @@ export default function HomePage() {
         setSenha('')
         setUsuario('')
 
-        setTimeout (() => {
-            
         setMensagemErro('Usuário e/ou senha incorretos!')
-        }, 200)
 
         setTimeout (() => {
             setMensagemErro('')
@@ -46,7 +43,7 @@ export default function HomePage() {
                     alignItems: 'center', 
                     justifyContent: 'center',
                     width: '60%', 
-                    height: '50%',
+                    height: '70%',
                     gap: '0.5em',
                     borderRadius: "10px",
                     border: '1px solid yellow',
@@ -66,6 +63,7 @@ export default function HomePage() {
                     name="input"
                     onChange={(evento) => setUsuario(evento.target.value)}
                     value={usuario}
+                    placeholder="admin"
                     style={{
                         padding: '1em',
                         borderRadius: "10px",
@@ -88,6 +86,7 @@ export default function HomePage() {
                     name="input"
                     onChange={(evento) => setSenha(evento.target.value)}
                     value={senha}
+                    placeholder="12345"
                     style={{
                         padding: '1em',
                         borderRadius: "10px",
@@ -113,11 +112,22 @@ export default function HomePage() {
                     styleSheet={{
                         fontSize: '1.5em',
                         color: 'rgba(255, 0, 0)',
-                        padding: '0.2em 0.5em'
+                        padding: '0.2em 0.5em',
+                        minHeight: '2em'
                     }}
                 >
                     {mensagemErro}
                 </Text>
+                <p
+                    style={{
+                        fontSize: '0.8em',
+                        color: "gray",
+                        justifySelf: 'flex-end',
+                        margin: '0'
+                    }}
+                >
+                    Feito por Luis Henrique
+                </p>
             </form>
         </Box>
     )
